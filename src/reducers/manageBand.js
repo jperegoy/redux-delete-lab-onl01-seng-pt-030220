@@ -10,7 +10,6 @@ export default function manageBand(state = {
        * the same, despite the odds being astronomically low.
        */
       const band = {
-        id: Math.random(),
         name: action.name,
         uuid: uuidv4()
       };
