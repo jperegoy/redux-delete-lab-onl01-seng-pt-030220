@@ -1,38 +1,33 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class BandInput extends Component {
+const BandInput = ({ addBand }) => {
+  const [bandName, setBandName] = useState("");
 
-  state = {
-    bandName: ''
-  }
+  const handleChange = e => setBandName(e.target.value);
 
-  handleOnChange(event) {
-    this.setState({
-      bandName: event.target.value,
-    });
-  }
+  const handleSubmit = e => {
+    e.preventDefault();
 
-  handleOnSubmit(event) {
-    event.preventDefault();
-    this.props.addBand(this.state.bandName);
-    this.setState({
-      bandName: '',
-    });
-  }
+    if (!bandName || bandName === "Phish") {
+      alert("Please enter a band name");
+      return;
+    }
 
-  render() {
-    return (
-      <div>
-        <form onSubmit={(event) => this.handleOnSubmit(event)}>
-          <input
-            type="text"
-            value={this.state.bandName}
-            onChange={(event) => this.handleOnChange(event)} />
-          <input type="submit" />
-        </form>
-      </div>
-    );
-  }
+    addBand(bandName);
+    setBandName("");
+  };
+
+  return (
+    <form className="band-form" onSubmit={handleSubmit}>
+      <input
+        onChange={handleChange}
+        type="text"
+        value={bandName}
+        placeholder="Enter a band"
+      />
+      <button type="submit">Add Band</button>
+    </form>
+  );
 };
 
 export default BandInput;

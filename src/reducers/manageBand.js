@@ -3,6 +3,10 @@ export default function manageBand(state = {
 }, action) {
   switch (action.type) {
     case 'ADD_BAND':
+      /**
+       * Strictly speaking `Math.random()` doesn't prevent IDs from being
+       * the same, despite the odds being astronomically low.
+       */
       const band = { id: Math.random(), name: action.name }
       return { ...state, bands: [...state.bands, band] }
     case 'DELETE_BAND':

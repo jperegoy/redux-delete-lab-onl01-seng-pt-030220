@@ -34,7 +34,7 @@ will also need to pass this info through to the band object (this should include
 _name_ of the band) as the props to each rendered `Band` component.
 
 5. In the `Band` component, you will need to add a button that dispatches an
-action of type `'DELETE_BAND'` and then passes through that band's id as the
+action of type `'DELETE_BAND'` which then passes through that band's id as the
 `action.id`. This dispatched action should be provided as a prop from
 BandsContainer.
 
