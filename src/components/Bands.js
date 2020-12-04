@@ -5,7 +5,7 @@ const Bands = ({ bands, deleteBand }) => (
   <ul className="bands-list">
     {bands.length ? bands.map(band => (
       <Band
-        key={band.id}
+        key={band.uuid}
         deleteBand={deleteBand}
         {...band}
       />
